@@ -1,0 +1,34 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+         request.auth.token.email == "munibmmlm@gmail.com");
+    }
+
+    // Allow public read access to all collections as requested
+    // Allow write access only to authenticated admins
+    match /{collection}/{document} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Special case for leads creation (public can submit contact form)
+    match /leads/{leadId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Special case for users (only admin can manage users, but users can read their own profile if needed)
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      allow write: if isAdmin();
+    }
+  }
+}
