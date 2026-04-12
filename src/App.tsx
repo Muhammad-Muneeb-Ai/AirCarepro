@@ -4,6 +4,8 @@ import { Toaster } from 'sonner';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingCallButton from './components/FloatingCallButton';
+import ScrollToTop from './components/ScrollToTop';
+import ScrollToTopButton from './components/ScrollToTopButton';
 import CookieConsent from './components/CookieConsent';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingSpinner from './components/LoadingSpinner';
@@ -33,6 +35,7 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
+      <ScrollToTop />
       <Navbar />
       <main>
         <Suspense fallback={<LoadingSpinner />}>
@@ -62,6 +65,7 @@ function AppContent() {
       </main>
       <Footer />
       <FloatingCallButton />
+      <ScrollToTopButton />
       <CookieConsent />
       <Toaster position="top-right" richColors />
     </div>
