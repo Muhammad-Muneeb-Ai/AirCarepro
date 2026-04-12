@@ -95,6 +95,7 @@ export default function Services() {
                     alt={service.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
@@ -238,7 +239,7 @@ export default function Services() {
           </div>
           <div className="lg:w-1/2 relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl">
-              <img src="https://picsum.photos/seed/process/800/1000" alt="Our process" className="w-full h-auto" referrerPolicy="no-referrer" />
+              <img src="https://picsum.photos/seed/process/800/1000" alt="Our process" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" />
             </div>
             <div className="absolute -bottom-10 -right-10 bg-white p-8 rounded-3xl shadow-xl border border-slate-100 hidden md:block">
               <div className="flex items-center gap-4">

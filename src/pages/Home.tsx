@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 import { 
@@ -25,10 +25,14 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
-import ServiceAreas from '../components/ServiceAreas';
 import { db, handleFirestoreError, OperationType } from '../lib/firebase';
 import { collection, query, where, orderBy, limit, onSnapshot, doc } from 'firebase/firestore';
 import { Service, BlogPost } from '../types';
+
+// Lazy load below-the-fold components
+const ServiceAreas = lazy(() => import('../components/ServiceAreas'));
+const Testimonials = lazy(() => import('../components/Testimonials'));
+const BlogPreview = lazy(() => import('../components/BlogPreview'));
 
 const services = [
   {
@@ -323,7 +327,7 @@ export default function Home() {
                 alt="HVAC Professional at work"
                 className="w-full h-auto object-contain hover:scale-105 transition-transform duration-700"
                 referrerPolicy="no-referrer"
-                loading="lazy"
+                loading="eager"
               />
             </div>
             {/* Decorative elements */}
@@ -644,108 +648,19 @@ export default function Home() {
         </div>
       </section>
 
-      <ServiceAreas />
+      <Suspense fallback={<div className="py-24 text-center text-slate-400">Loading areas...</div>}>
+        <ServiceAreas />
+      </Suspense>
 
       {/* Testimonials */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <span className="text-blue-600 font-bold tracking-widest uppercase text-sm">Testimonials</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mt-4">
-              What Our Clients Say
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonialsContent.map((t: any, index: number) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="p-8 rounded-3xl bg-slate-50 border border-slate-100 flex flex-col gap-6"
-              >
-                <div className="flex gap-1">
-                  {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} className="text-yellow-400 fill-yellow-400" size={20} />
-                  ))}
-                </div>
-                <p className="text-lg text-slate-700 italic leading-relaxed">
-                  "{t.text}"
-                </p>
-                <div className="flex items-center gap-4 mt-auto">
-                  <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl">
-                    {t.name[0]}
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-bold text-slate-900">{t.name}</span>
-                    <span className="text-sm text-slate-500">{t.role}</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Suspense fallback={<div className="py-24 text-center text-slate-400">Loading testimonials...</div>}>
+        <Testimonials content={testimonialsContent} />
+      </Suspense>
 
       {/* Blog Preview */}
-      <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="relative flex flex-col items-center text-center gap-4 mb-16">
-            <div className="flex flex-col gap-4 max-w-2xl mx-auto">
-              <span className="text-blue-600 font-bold tracking-widest uppercase text-sm">Latest Insights</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
-                From Our Blog
-              </h2>
-            </div>
-            <Link 
-              to="/blog" 
-              className="md:absolute md:right-0 md:bottom-0 text-blue-600 font-bold flex items-center gap-2 hover:gap-4 transition-all mt-4 md:mt-0"
-            >
-              View All Posts <ArrowRight size={20} />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {latestPosts.map((post, index) => (
-              <motion.div
-                key={post.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="group bg-white rounded-[32px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500"
-              >
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src={post.featured_image_url || 'https://images.unsplash.com/photo-1581094288338-2314dddb7ec3?auto=format&fit=crop&q=80&w=800'}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1581094288338-2314dddb7ec3?auto=format&fit=crop&q=80&w=800';
-                    }}
-                  />
-                </div>
-                <div className="p-8">
-                  <span className="text-blue-600 text-xs font-bold uppercase tracking-widest">{post.category || 'Maintenance'}</span>
-                  <h3 className="text-xl font-bold text-slate-900 mt-2 mb-4 group-hover:text-blue-600 transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6 line-clamp-2">
-                    {post.excerpt}
-                  </p>
-                  <Link to={`/blog/${post.slug}`} className="text-blue-600 font-bold flex items-center gap-2 group/link">
-                    Read More <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Suspense fallback={<div className="py-24 text-center text-slate-400">Loading blog...</div>}>
+        <BlogPreview posts={latestPosts} />
+      </Suspense>
 
       {/* CTA Section */}
       <section className="py-24 container mx-auto px-4">

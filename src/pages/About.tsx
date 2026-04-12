@@ -83,7 +83,7 @@ export default function About() {
             className="relative"
           >
             <div className="rounded-[40px] overflow-hidden shadow-2xl border-8 border-white">
-              <img src={content.story?.image} alt="Our team at work" className="w-full h-auto" referrerPolicy="no-referrer" />
+              <img src={content.story?.image} alt="Our team at work" className="w-full h-auto" referrerPolicy="no-referrer" loading="lazy" />
             </div>
             <div className="absolute -bottom-10 -left-10 bg-blue-600 p-8 rounded-3xl shadow-xl text-white hidden md:block">
               <div className="flex items-center gap-4">
@@ -197,6 +197,7 @@ export default function About() {
                       alt={member.name} 
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       referrerPolicy="no-referrer"
+                      loading="lazy"
                     />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-1">{member.name}</h3>
