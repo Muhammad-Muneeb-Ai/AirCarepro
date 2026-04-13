@@ -5,12 +5,12 @@ export const handler = async (event: any) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  const resend = new Resend(process.env.RESEND_API_KEY || 're_WbDQ4wT3_LdRAQHKXP6y5QxwiC1ycodVJ');
   const { name, email, phone, service, message } = JSON.parse(event.body);
 
   try {
     const data = await resend.emails.send({
-      from: 'AirCare Pro <notifications@resend.dev>', // You should verify your domain in Resend
+      from: 'onboarding@resend.dev',
       to: ['tradingfriends56@gmail.com'],
       subject: `New Lead: ${name} - ${service}`,
       html: `
