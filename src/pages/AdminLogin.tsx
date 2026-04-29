@@ -40,7 +40,7 @@ export default function AdminLogin() {
           </div>
           <div className="flex flex-col">
             <h1 className="text-3xl font-bold text-slate-900">Admin Login</h1>
-            <p className="text-slate-500 font-medium">Secure access to AirCare Pro management</p>
+            <p className="text-slate-500 font-medium">Secure access to Apex Duct Cleaning management</p>
           </div>
         </div>
 

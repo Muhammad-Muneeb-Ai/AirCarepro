@@ -4,11 +4,11 @@ export default function TermsOfService() {
   const sections = [
     {
       title: "Acceptance of Terms",
-      content: "By accessing or using AirCare Pro's services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing our services."
+      content: "By accessing or using Apex Duct Cleaning's services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing our services."
     },
     {
       title: "Service Description",
-      content: "AirCare Pro provides professional air duct cleaning, HVAC restoration, and related indoor air quality services. We reserve the right to modify or discontinue any service at any time without notice."
+      content: "Apex Duct Cleaning provides professional air duct cleaning, HVAC restoration, and related indoor air quality services. We reserve the right to modify or discontinue any service at any time without notice."
     },
     {
       title: "Payment Terms",
@@ -20,7 +20,7 @@ export default function TermsOfService() {
     },
     {
       title: "Limitation of Liability",
-      content: "In no event shall AirCare Pro or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use our services."
+      content: "In no event shall Apex Duct Cleaning or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use our services."
     },
     {
       title: "Governing Law",

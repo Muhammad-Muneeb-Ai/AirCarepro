@@ -92,7 +92,7 @@ const testimonials = [
   {
     name: 'Sarah Johnson',
     role: 'Homeowner',
-    text: 'AirCare Pro did an amazing job cleaning our ducts. The air feels so much fresher now!',
+    text: 'Apex Duct Cleaning did an amazing job cleaning our ducts. The air feels so much fresher now!',
     rating: 5,
   },
   {
@@ -163,7 +163,7 @@ export default function Home() {
 
   const heroContent = pageContent?.hero || {
     badge: 'Certified HVAC Professionals',
-    title: 'Breathe Cleaner Air with AirCare Pro',
+    title: 'Breathe Cleaner Air with Apex Duct Cleaning',
     description: 'Professional air duct cleaning and HVAC restoration services for homes and businesses. We improve your health and save you money.',
     image: 'https://q3zyn4woatazi.ok.kimi.link/images/hero-technician.jpg'
   };
@@ -195,7 +195,7 @@ export default function Home() {
     {
       name: 'Sarah Johnson',
       role: 'Homeowner',
-      text: 'AirCare Pro did an amazing job cleaning our ducts. The air feels so much fresher now!',
+            text: 'Apex Duct Cleaning did an amazing job cleaning our ducts. The air feels so much fresher now!',
       rating: 5,
     },
     {
@@ -234,7 +234,7 @@ export default function Home() {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          "name": "AirCare Pro",
+          "name": "Apex Duct Cleaning",
           "image": heroContent.image,
           "@id": "",
           "url": window.location.origin,
@@ -607,7 +607,7 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-blue-600 font-bold tracking-widest uppercase text-sm"
             >
-              The AirCare Advantage
+              The Apex Advantage
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}

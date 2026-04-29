@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
     },
     {
       title: "How We Use Your Information",
-      content: "We use the information we collect to provide, maintain, and improve our services, to communicate with you, and to develop new products and services. We also use it to protect AirCare Pro and our users."
+      content: "We use the information we collect to provide, maintain, and improve our services, to communicate with you, and to develop new products and services. We also use it to protect Apex Duct Cleaning and our users."
     },
     {
       title: "Cookies",

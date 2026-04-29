@@ -66,13 +66,20 @@ export default function Contact() {
     try {
       // 2. Send Email Notification via Netlify Function
       try {
-        await fetch('/.netlify/functions/send-email', {
+        const response = await fetch('/.netlify/functions/send-email', {
           method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify(formData),
         });
+        
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error('Email error response:', errorData);
+        }
       } catch (emailError) {
         console.error('Error sending email notification:', emailError);
-        // We don't block the success state if only the email fails
       }
       
       setIsSuccess(true);
@@ -144,7 +151,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="lg:col-span-2 bg-white p-8 md:p-12 rounded-[40px] shadow-2xl border border-slate-100 order-2 lg:order-1"
+            className="lg:col-span-2 bg-white p-8 md:p-12 rounded-[40px] shadow-2xl border border-slate-100"
           >
             {isSuccess ? (
               <div className="h-full flex flex-col items-center justify-center text-center gap-6 py-12">
@@ -241,7 +248,7 @@ export default function Contact() {
           </motion.div>
 
           {/* Contact Info Cards */}
-          <div className="lg:col-span-1 flex flex-col gap-6 order-1 lg:order-2">
+          <div className="lg:col-span-1 flex flex-col gap-6">
             {contactItems.map((info, index) => (
               <motion.div
                 key={info.label}

@@ -5,13 +5,15 @@ export const handler = async (event: any) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY || 're_WbDQ4wT3_LdRAQHKXP6y5QxwiC1ycodVJ');
+  const resend = new Resend(process.env.RESEND_API_KEY || 're_PUU7ZTcw_NKagVZgQpDkB619X6dBwwyLd');
   const { name, email, phone, service, message } = JSON.parse(event.body);
+
+  console.log('Sending email lead for:', name, 'to:', 'munibmmlm@gmail.com');
 
   try {
     const data = await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: ['tradingfriends56@gmail.com'],
+      from: 'Apex Duct Cleaning <leads@Apexductcleaning.com>',
+      to: ['munibmmlm@gmail.com', 'tradingfriends56@gmail.com'],
       subject: `New Lead: ${name} - ${service}`,
       html: `
         <h1>New Lead Details</h1>
@@ -28,6 +30,7 @@ export const handler = async (event: any) => {
       body: JSON.stringify(data),
     };
   } catch (error) {
+    console.error('Resend Error:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error instanceof Error ? error.message : 'Failed to send email' }),

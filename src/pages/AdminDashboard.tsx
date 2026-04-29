@@ -1051,7 +1051,7 @@ function BlogManager({ showConfirm }: { showConfirm: (title: string, message: st
           </ul>
 
           <h3>The Solution: Professional Sanitization</h3>
-          <p>Standard vacuuming isn't enough to kill mold. At AirCare Pro, we use clinical-grade, EPA-approved antimicrobial treatments that eliminate mold at the source and prevent its return. Our process includes moisture source identification to ensure your home stays mold-free for the long term.</p>
+          <p>Standard vacuuming isn't enough to kill mold. At Apex Duct Cleaning, we use clinical-grade, EPA-approved antimicrobial treatments that eliminate mold at the source and prevent its return. Our process includes moisture source identification to ensure your home stays mold-free for the long term.</p>
         `
       },
       {
@@ -1121,7 +1121,7 @@ function BlogManager({ showConfirm }: { showConfirm: (title: string, message: st
           <p>In a typical home, air is recirculated 5 to 7 times per day. This means that if your ducts are dirty, you are breathing in the same contaminants over and over again. High-quality air filters help, but they can't stop the buildup that already exists deep within your ductwork.</p>
 
           <h3>The HEPA Difference</h3>
-          <p>At AirCare Pro, we use advanced HEPA-filtered vacuum systems that capture 99.97% of particles as small as 0.3 microns. This ensures that the allergens we remove from your ducts stay out of your home, providing immediate relief for allergy and asthma sufferers.</p>
+          <p>At Apex Duct Cleaning, we use advanced HEPA-filtered vacuum systems that capture 99.97% of particles as small as 0.3 microns. This ensures that the allergens we remove from your ducts stay out of your home, providing immediate relief for allergy and asthma sufferers.</p>
         `
       },
       {
@@ -1439,7 +1439,7 @@ function PageContentManager({ showConfirm }: { showConfirm: (title: string, mess
       initialContent = {
         hero: {
           badge: 'Certified HVAC Professionals',
-          title: 'Breathe Cleaner Air with AirCare Pro',
+          title: 'Breathe Cleaner Air with Apex Duct Cleaning',
           description: 'Professional air duct cleaning and HVAC restoration services for homes and businesses. We improve your health and save you money.',
           image: 'https://q3zyn4woatazi.ok.kimi.link/images/hero-technician.jpg'
         },
@@ -1450,7 +1450,7 @@ function PageContentManager({ showConfirm }: { showConfirm: (title: string, mess
           { title: 'Upfront Honest Pricing', description: 'No hidden fees or surprise upcharges. We provide clear, detailed quotes before any work begins.', iconName: 'BadgeDollarSign' },
         ],
         testimonials: [
-          { name: 'Sarah Johnson', role: 'Homeowner', text: 'AirCare Pro did an amazing job cleaning our ducts. The air feels so much fresher now!', rating: 5 },
+          { name: 'Sarah Johnson', role: 'Homeowner', text: 'Apex Duct Cleaning did an amazing job cleaning our ducts. The air feels so much fresher now!', rating: 5 },
           { name: 'Michael Chen', role: 'Property Manager', text: 'Professional, punctual, and thorough. We use them for all our commercial properties.', rating: 5 },
           { name: 'Emily Davis', role: 'Homeowner', text: 'The team was very respectful of our home and the results were immediate. Highly recommend!', rating: 5 },
         ],
@@ -1470,7 +1470,7 @@ function PageContentManager({ showConfirm }: { showConfirm: (title: string, mess
         story: {
           badge: 'Our Story',
           title: 'Dedicated to Pure Air and Healthy Homes',
-          description1: 'Founded in 2009, AirCare Pro started with a simple mission: to provide the highest quality air duct cleaning services using the most advanced technology available.',
+          description1: 'Founded in 2009, Apex Duct Cleaning started with a simple mission: to provide the highest quality air duct cleaning services using the most advanced technology available.',
           description2: 'Over the years, we\'ve expanded our expertise to include full HVAC restoration, dryer vent cleaning, and specialized disaster recovery. Our team of NADCA-certified technicians is committed to excellence in every job, large or small.',
           image: 'https://picsum.photos/seed/about/800/1000'
         },

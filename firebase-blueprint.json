@@ -17,7 +17,7 @@
     },
     "Service": {
       "title": "Service",
-      "description": "A service offered by AirCare Pro",
+      "description": "A service offered by Apex Duct Cleaning",
       "type": "object",
       "properties": {
         "title": { "type": "string", "description": "Service title" },

@@ -9,7 +9,7 @@ export default function Footer() {
         {/* Brand */}
         <div className="flex flex-col gap-6">
           <Link to="/" className="w-fit">
-            <Logo textSize="text-xl text-white" />
+            <Logo variant="footer" />
           </Link>
           <p className="text-slate-400 leading-relaxed">
             Professional air duct cleaning and HVAC restoration services. We improve your indoor air quality and system efficiency.
@@ -73,7 +73,7 @@ export default function Footer() {
       </div>
 
       <div className="container mx-auto px-4 pt-10 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-slate-500">
-        <p>© {new Date().getFullYear()} AirCare Pro. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Apex Duct Cleaning. All rights reserved.</p>
         <div className="flex items-center gap-8">
           <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
           <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>

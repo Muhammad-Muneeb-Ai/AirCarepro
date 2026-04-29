@@ -86,7 +86,7 @@ export default function BlogPostDetail() {
                   A
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-bold text-slate-900">AirCare Team</span>
+                  <span className="font-bold text-slate-900">Apex Team</span>
                   <span className="text-sm text-slate-500">Expert Contributor</span>
                 </div>
               </div>
