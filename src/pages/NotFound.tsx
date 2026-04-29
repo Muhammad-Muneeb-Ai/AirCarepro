@@ -1,18 +1,18 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Wind, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import Logo from '../components/Logo';
 
 export default function NotFound() {
   return (
     <div className="min-h-screen pt-32 pb-24 flex items-center justify-center bg-slate-50 px-4">
       <div className="max-w-2xl w-full text-center flex flex-col items-center gap-8">
         <motion.div
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
+          initial={{ scale: 0, y: -20 }}
+          animate={{ scale: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
-          className="w-32 h-32 bg-blue-600 text-white rounded-[40px] flex items-center justify-center shadow-2xl"
         >
-          <Wind size={64} />
+          <Logo orientation="vertical" className="mb-4" />
         </motion.div>
 
         <motion.div

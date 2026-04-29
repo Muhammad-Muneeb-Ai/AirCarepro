@@ -4,37 +4,57 @@ interface LogoProps {
   className?: string;
   hideText?: boolean;
   variant?: 'default' | 'footer';
+  orientation?: 'horizontal' | 'vertical';
 }
 
-export default function Logo({ className, hideText = false, variant = 'default' }: LogoProps) {
+export default function Logo({ 
+  className, 
+  hideText = false, 
+  variant = 'default',
+  orientation = 'horizontal'
+}: LogoProps) {
   const isFooter = variant === 'footer';
+  const isVertical = orientation === 'vertical';
   
   return (
-    <div className={cn("flex items-center gap-3 group", className)}>
+    <div className={cn(
+      "flex items-center gap-3 group", 
+      isVertical ? "flex-col text-center" : "flex-row",
+      className
+    )}>
       <img 
         src="https://i.ibb.co/BH0CB99c/IMG-20260429-WA0049-removebg-preview.png" 
         alt="Apex Duct Cleaning Shield" 
         className={cn(
-          "h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105",
+          isVertical ? "h-24 md:h-32 mb-2" : "h-10 md:h-12",
+          "w-auto object-contain transition-transform duration-300 group-hover:scale-105",
           isFooter && "drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]"
         )}
         referrerPolicy="no-referrer"
       />
       {!hideText && (
-        <div className="flex flex-col justify-center">
+        <div className={cn(
+          "flex flex-col justify-center",
+          isVertical ? "items-center" : "items-start"
+        )}>
           <div className="flex items-center">
             <span className={cn(
-              "text-xl md:text-2xl font-black tracking-tighter leading-none uppercase",
+              isVertical ? "text-3xl md:text-5xl" : "text-xl md:text-2xl",
+              "font-black tracking-tighter leading-none uppercase",
               isFooter ? "text-white drop-shadow-[0_0_2px_rgba(255,255,255,0.8)]" : "text-[#0f3b5e]"
             )}>
               Apex
             </span>
-            <span className="text-xl md:text-2xl font-black tracking-tighter text-[#00A3FF] ml-1 leading-none uppercase">
+            <span className={cn(
+              isVertical ? "text-3xl md:text-5xl" : "text-xl md:text-2xl",
+              "font-black tracking-tighter text-[#00A3FF] ml-1 md:ml-2 leading-none uppercase"
+            )}>
               Duct
             </span>
           </div>
           <span className={cn(
-            "text-[10px] md:text-[11px] font-bold uppercase tracking-[0.35em] leading-none mt-1",
+            isVertical ? "text-sm md:text-lg mt-2 font-black" : "text-[10px] md:text-[11px] font-bold mt-1",
+            "uppercase tracking-[0.35em] leading-none",
             isFooter ? "text-slate-300" : "text-[#0f3b5e]"
           )}>
             Cleaning
