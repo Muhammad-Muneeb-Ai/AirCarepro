@@ -246,7 +246,7 @@ function DashboardOverview({ showConfirm }: { showConfirm: (title: string, messa
               let content = {};
               if (page === 'homepage') {
                 content = {
-                  hero: { title: 'Breathe Cleaner Air with ApexCare Pro', description: 'Expert air duct cleaning and HVAC restoration.', badge: 'Certified Professionals', image: 'https://images.unsplash.com/photo-1581094288338-2314dddb79a8?auto=format&fit=crop&q=80' },
+                  hero: { title: 'Breathe Cleaner Air with Apex Care Pro', description: 'Expert air duct cleaning and HVAC restoration.', badge: 'Certified Professionals', image: 'https://images.unsplash.com/photo-1581094288338-2314dddb79a8?auto=format&fit=crop&q=80' },
                   stats: [{ label: 'Happy Clients', value: '5k+' }, { label: 'Years Exp', value: '15+' }, { label: 'Rating', value: '4.9/5' }]
                 };
               } else if (page === 'about') {
@@ -1485,7 +1485,7 @@ function PageContentManager({ showConfirm }: { showConfirm: (title: string, mess
       initialContent = {
         hero: {
           badge: 'Certified HVAC Professionals',
-          title: 'Breathe Cleaner Air with ApexCare Pro',
+          title: 'Breathe Cleaner Air with Apex Care Pro',
           description: 'Professional air duct cleaning and HVAC restoration services for homes and businesses. We improve your health and save you money.',
           image: 'https://q3zyn4woatazi.ok.kimi.link/images/hero-technician.jpg'
         },

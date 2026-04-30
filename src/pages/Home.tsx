@@ -164,14 +164,14 @@ export default function Home() {
 
   const rawHero = pageContent?.hero || {
     badge: 'Certified HVAC Professionals',
-    title: 'Breathe Cleaner Air with ApexCare Pro',
+    title: 'Breathe Cleaner Air with Apex Care Pro',
     description: 'Professional air duct cleaning and HVAC restoration services for homes and businesses. We improve your health and save you money.',
     image: 'https://q3zyn4woatazi.ok.kimi.link/images/hero-technician.jpg'
   };
 
   const heroContent = {
     ...rawHero,
-    title: rawHero.title?.replace('AirCare Pro', 'ApexCare Pro') || 'Breathe Cleaner Air with ApexCare Pro'
+    title: rawHero.title?.replace('AirCare Pro', 'Apex Care Pro').replace('ApexCare Pro', 'Apex Care Pro') || 'Breathe Cleaner Air with Apex Care Pro'
   };
 
   const whyChooseUsContent = pageContent?.whyChooseUs || [
