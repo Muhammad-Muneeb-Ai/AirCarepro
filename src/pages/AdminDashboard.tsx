@@ -246,7 +246,7 @@ function DashboardOverview({ showConfirm }: { showConfirm: (title: string, messa
               let content = {};
               if (page === 'homepage') {
                 content = {
-                  hero: { title: 'Breathe Cleaner Air', description: 'Professional air duct cleaning services.', badge: 'Certified Pros', image: 'https://picsum.photos/seed/hvac/1200/800' },
+                  hero: { title: 'Cleaner Air, Healthier Home', description: 'Expert air duct cleaning and HVAC restoration.', badge: 'Certified Professionals', image: 'https://images.unsplash.com/photo-1581094288338-2314dddb79a8?auto=format&fit=crop&q=80' },
                   stats: [{ label: 'Happy Clients', value: '5k+' }, { label: 'Years Exp', value: '15+' }, { label: 'Rating', value: '4.9/5' }]
                 };
               } else if (page === 'about') {
@@ -1485,7 +1485,7 @@ function PageContentManager({ showConfirm }: { showConfirm: (title: string, mess
       initialContent = {
         hero: {
           badge: 'Certified HVAC Professionals',
-          title: 'Breathe Cleaner Air with Apex Duct Cleaning',
+          title: 'Cleaner Air, Healthier Home With Apex Duct Cleaning',
           description: 'Professional air duct cleaning and HVAC restoration services for homes and businesses. We improve your health and save you money.',
           image: 'https://q3zyn4woatazi.ok.kimi.link/images/hero-technician.jpg'
         },
