@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import { useSearchParams } from 'react-router-dom';
 import { Phone, Mail, MapPin, Send, CheckCircle, Facebook, Twitter, Instagram, Linkedin, Loader2 } from 'lucide-react';
 import { db, handleFirestoreError, OperationType } from '../lib/firebase';
 import { collection, addDoc, serverTimestamp, doc, onSnapshot, query, orderBy } from 'firebase/firestore';
@@ -11,6 +12,8 @@ const iconMap: { [key: string]: any } = {
 };
 
 export default function Contact() {
+  const [searchParams] = useSearchParams();
+  const serviceParam = searchParams.get('service');
   const [content, setContent] = useState<any>(null);
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
@@ -18,7 +21,7 @@ export default function Contact() {
     name: '',
     email: '',
     phone: '',
-    service: '',
+    service: serviceParam || '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -280,22 +283,22 @@ export default function Contact() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="p-8 rounded-3xl bg-slate-50 border border-slate-100 flex items-center gap-6 hover:bg-white hover:shadow-xl transition-all"
+                className="p-6 md:p-8 rounded-3xl bg-slate-50 border border-slate-100 flex items-center gap-4 md:gap-6 hover:bg-white hover:shadow-xl transition-all"
               >
-                <div className={`p-4 rounded-2xl ${info.color}`}>
+                <div className={`p-4 rounded-2xl ${info.color} shrink-0`}>
                   <info.icon size={24} />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col min-w-0">
                   <span className="text-sm text-slate-500 font-bold uppercase tracking-widest">{info.label}</span>
                   {info.href ? (
                     <a 
                       href={info.href} 
-                      className="text-lg font-bold text-[#0f3b5e] hover:text-blue-600 hover:underline transition-all"
+                      className="text-lg font-bold text-[#0f3b5e] hover:text-blue-600 hover:underline transition-all break-all"
                     >
                       {info.value}
                     </a>
                   ) : (
-                    <span className="text-lg font-bold text-slate-900">{info.value}</span>
+                    <span className="text-lg font-bold text-slate-900 break-words">{info.value}</span>
                   )}
                 </div>
               </motion.div>

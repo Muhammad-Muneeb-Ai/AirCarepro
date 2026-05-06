@@ -47,14 +47,14 @@ export default function Services() {
   }
 
   return (
-    <div className="pt-32 pb-24">
+    <div className="pt-20 lg:pt-32 pb-12 lg:pb-24">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-20">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-blue-600 font-bold tracking-widest uppercase text-sm"
+            className="text-blue-600 font-bold tracking-widest uppercase text-xs lg:text-sm"
           >
             Our Services
           </motion.span>
@@ -62,7 +62,7 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mt-4"
+            className="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-900 tracking-tight mt-4"
           >
             Professional HVAC Solutions in the <span className="text-blue-600">USA</span>
           </motion.h1>
@@ -70,14 +70,14 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-slate-600 mt-6 leading-relaxed"
+            className="text-lg lg:text-xl text-slate-600 mt-4 lg:mt-6 leading-relaxed"
           >
             We offer a full range of HVAC cleaning and restoration services to ensure your home or business has the cleanest air possible.
           </motion.p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
           {services.map((service, index) => {
             const Icon = iconMap[(service as any).iconName] || Wind;
             return (
@@ -87,9 +87,9 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group bg-white rounded-[40px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col md:flex-row"
+                className="group bg-white rounded-[24px] lg:rounded-[40px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col md:flex-row"
               >
-                <div className="md:w-2/5 relative overflow-hidden">
+                <div className="md:w-2/5 relative overflow-hidden aspect-[16/9] md:aspect-auto">
                   <img
                     src={service.image}
                     alt={service.title}
@@ -99,7 +99,7 @@ export default function Services() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-                <div className="md:w-3/5 p-8 md:p-10 flex flex-col gap-6">
+                <div className="md:w-3/5 p-6 lg:p-10 flex flex-col gap-4 lg:gap-6">
                   <div className="flex items-center justify-between">
                     <div className={cn("p-3 rounded-2xl", (service as any).color || 'bg-blue-50 text-blue-600')}>
                       <Icon size={24} />
@@ -210,15 +210,15 @@ export default function Services() {
         <ServiceAreas />
 
         {/* Trust Section */}
-        <div className="mt-32 bg-slate-50 rounded-[40px] p-12 md:p-20 flex flex-col lg:flex-row items-center gap-16">
-          <div className="lg:w-1/2 flex flex-col gap-8">
-            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight">
+        <div className="mt-16 lg:mt-32 bg-slate-50 rounded-[24px] lg:rounded-[40px] p-8 lg:p-20 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+          <div className="lg:w-1/2 flex flex-col gap-6 lg:gap-8">
+            <h2 className="text-2xl md:text-5xl font-bold text-slate-900 tracking-tight">
               Our Multi-Step Cleaning Process
             </h2>
-            <p className="text-lg text-slate-600 leading-relaxed">
+            <p className="text-base lg:text-lg text-slate-600 leading-relaxed">
               We follow NADCA standards to ensure a thorough cleaning of your entire HVAC system. Our process includes source removal, HEPA filtration, and optional antimicrobial treatment.
             </p>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4 lg:gap-6">
               {[
                 { title: 'Inspection', desc: 'Detailed assessment of your system and air quality.' },
                 { title: 'Preparation', desc: 'Protecting your home and sealing the system.' },
@@ -226,12 +226,12 @@ export default function Services() {
                 { title: 'Verification', desc: 'Final inspection to ensure complete cleanliness.' },
               ].map((step, i) => (
                 <div key={step.title} className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shrink-0">
+                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shrink-0 text-sm lg:text-base">
                     {i + 1}
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <h4 className="font-bold text-slate-900">{step.title}</h4>
-                    <p className="text-slate-600 text-sm">{step.desc}</p>
+                  <div className="flex flex-col gap-0.5">
+                    <h4 className="font-bold text-slate-900 text-sm lg:text-base">{step.title}</h4>
+                    <p className="text-slate-600 text-xs lg:text-sm">{step.desc}</p>
                   </div>
                 </div>
               ))}
