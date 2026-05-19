@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { MessageCircle, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import Logo from './Logo';
-import { MapPin, MessageCircle, Mail } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -54,31 +53,31 @@ export default function Footer() {
         </div>
 
         {/* Contact Info */}
-<div className="flex flex-col gap-6">
-  <h4 className="text-white font-bold text-lg">Contact Info</h4>
-  <ul className="flex flex-col gap-4">
-    <li className="flex items-start gap-3">
-      <MapPin className="text-blue-500 shrink-0" size={20} />
-      <span>123 Clean Air Way, Suite 100, Houston, TX 77001</span>
-    </li>
-    {/* WhatsApp - replaced phone icon and tel link */}
-    <li className="flex items-center gap-3">
-      <MessageCircle className="text-blue-500 shrink-0" size={20} />
-      <a 
-        href="https://wa.me/16089250728?text=Hello%2C%20I%27m%20interested%20in%20your%20duct%20cleaning%20services"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:text-blue-400 transition-colors"
-      >
-        (608) 925-0728
-      </a>
-    </li>
-    <li className="flex items-center gap-3">
-      <Mail className="text-blue-500 shrink-0" size={20} />
-      <a href="mailto:info@apexductcleaning.com" className="hover:text-blue-400 transition-colors">info@apexductcleaning.com</a>
-    </li>
-  </ul>
-</div>
+        <div className="flex flex-col gap-6">
+          <h4 className="text-white font-bold text-lg">Contact Info</h4>
+          <ul className="flex flex-col gap-4">
+            <li className="flex items-start gap-3">
+              <MapPin className="text-blue-500 shrink-0" size={20} />
+              <span>123 Clean Air Way, Suite 100, Houston, TX 77001</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <MessageCircle className="text-blue-500 shrink-0" size={20} />
+              <a
+                href="https://wa.me/16089250728?text=Hello%2C%20I%27m%20interested%20in%20your%20duct%20cleaning%20services"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 transition-colors"
+              >
+                (608) 925-0728
+              </a>
+            </li>
+            <li className="flex items-center gap-3">
+              <Mail className="text-blue-500 shrink-0" size={20} />
+              <a href="mailto:info@apexductcleaning.com" className="hover:text-blue-400 transition-colors">info@apexductcleaning.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
 
       <div className="container mx-auto px-4 pt-10 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-slate-500">
         <p>© {new Date().getFullYear()} Apex Duct Cleaning. All rights reserved.</p>
