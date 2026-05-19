@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MapPin, CheckCircle2, X, Phone, ArrowRight } from 'lucide-react';
+import { MapPin, CheckCircle2, X, Phone, ArrowRight, MessageCircle } from 'lucide-react';
 
 const cities = [
   'Austin', 'Dallas', 'Houston', 'San Antonio', 'Fort Worth', 
@@ -57,6 +57,19 @@ export default function ServiceAreas() {
                     <span className="font-medium">{city}</span>
                   </div>
                 ))}
+              </div>
+
+              <div className="flex items-center gap-2 mt-2">
+                <MessageCircle className="text-blue-500 shrink-0" size={20} />
+                <span className="text-slate-300">Message us on WhatsApp</span>
+                <a
+                  href="https://wa.me/16089250728?text=Hello%2C%20I%27m%20interested%20in%20your%20duct%20cleaning%20services"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-white hover:text-blue-400 transition-colors"
+                >
+                  (608) 925-0728
+                </a>
               </div>
 
               <button
@@ -146,17 +159,17 @@ export default function ServiceAreas() {
                           <span className="font-bold text-xl">Great! We serve {selectedCity}.</span>
                         </div>
                         <p className="text-green-800 leading-relaxed">
-                          Call <a href="tel:+18888505817" className="font-bold underline">888-850-5817</a> or fill the contact form to book.
+                          Message us on WhatsApp at <a href="https://wa.me/16089250728?text=Hello%2C%20I%27m%20interested%20in%20your%20duct%20cleaning%20services" target="_blank" rel="noopener noreferrer" className="font-bold underline">(608) 925-0728</a> or fill the contact form to book.
                         </p>
                       </div>
                     ) : (
                       <div className="p-6 rounded-3xl bg-blue-50 border border-blue-100 flex flex-col gap-4">
                         <div className="flex items-center gap-3 text-blue-600">
-                          <Phone size={24} />
+                          <MessageCircle size={24} />
                           <span className="font-bold text-xl">Confirm Service Area</span>
                         </div>
                         <p className="text-blue-800 leading-relaxed">
-                          Please call us at <a href="tel:+18888505817" className="font-bold underline">888-850-5817</a> to confirm service in your area.
+                          Please message us on WhatsApp at <a href="https://wa.me/16089250728?text=Hello%2C%20I%27m%20interested%20in%20your%20duct%20cleaning%20services" target="_blank" rel="noopener noreferrer" className="font-bold underline">(608) 925-0728</a> to confirm service in your area.
                         </p>
                       </div>
                     )}
