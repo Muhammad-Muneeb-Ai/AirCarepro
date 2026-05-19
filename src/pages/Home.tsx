@@ -21,7 +21,8 @@ import {
   Play,
   Calendar,
   Search,
-  Zap
+  Zap,
+  MessageCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
@@ -228,9 +229,9 @@ export default function Home() {
     ...(pageContent?.cta || {
       title: 'Ready for a Healthier Home Environment?',
       description: 'Contact us today for a free inspection and quote. Our experts are ready to help you breathe easier.',
-      phone: '888-850-5817'
+      phone: '(608) 925-0728'
     }),
-    phone: '888-850-5817'
+    phone: '(608) 925-0728'
   };
 
   const iconMap: any = {
@@ -693,10 +694,12 @@ export default function Home() {
                 Get Started Now
               </Link>
               <a
-                href={`tel:${ctaContent.phone.replace(/\D/g, '')}`}
+                href="https://wa.me/16089250728?text=Hello%2C%20I%27m%20interested%20in%20your%20duct%20cleaning%20services"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full sm:w-auto bg-blue-700 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-blue-800 transition-all flex items-center justify-center gap-3"
               >
-                <Phone size={24} /> {ctaContent.phone}
+                <MessageCircle size={24} /> {ctaContent.phone}
               </a>
             </div>
           </div>
