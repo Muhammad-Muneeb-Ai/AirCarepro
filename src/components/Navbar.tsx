@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, LayoutDashboard } from 'lucide-react';
+import { Menu, X, LayoutDashboard, MessageCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { cn } from '../lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
@@ -64,6 +64,17 @@ export default function Navbar() {
           >
             Request Service
           </Link>
+          <div className="flex items-center gap-2 border-l border-slate-200 pl-6 ml-2">
+            <MessageCircle className="text-blue-500 shrink-0" size={20} />
+            <a
+              href="https://wa.me/16089250728?text=Hello%2C%20I%27m%20interested%20in%20your%20duct%20cleaning%20services"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-800 font-bold hover:text-blue-600 transition-colors"
+            >
+              (608) 925-0728
+            </a>
+          </div>
         </div>
 
         {/* Mobile Toggle */}
@@ -103,6 +114,17 @@ export default function Navbar() {
               >
                 Request Service
               </Link>
+              <div className="flex items-center justify-center gap-2 mt-4 pb-2">
+                <MessageCircle className="text-blue-500 shrink-0" size={20} />
+                <a
+                  href="https://wa.me/16089250728?text=Hello%2C%20I%27m%20interested%20in%20your%20duct%20cleaning%20services"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-800 font-bold hover:text-blue-600 transition-colors"
+                >
+                  (608) 925-0728
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
