@@ -3,9 +3,9 @@ import { motion } from 'motion/react';
 import { useSearchParams } from 'react-router-dom';
 import { Phone, Mail, MapPin, Send, CheckCircle, Facebook, Twitter, Instagram, Linkedin, Loader2, MessageCircle } from 'lucide-react';
 import { db, handleFirestoreError, OperationType } from '../lib/firebase';
-import { collection, addDoc, serverTimestamp, doc, onSnapshot, query, orderBy } from 'firebase/firestore';
-import { toast } from 'sonner';
+import { collection, doc, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { Service } from '../types';
+import emailjs from '@emailjs/browser';
 
 const iconMap: { [key: string]: any } = {
   Phone, Mail, MapPin
@@ -51,71 +51,41 @@ export default function Contact() {
     };
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     setIsSubmitting(true);
 
     try {
-      // 1. Store in Firestore (Backup)
-      await addDoc(collection(db, 'leads'), {
-        ...formData,
-        status: 'new',
-        createdAt: serverTimestamp(),
-      });
-    } catch (error) {
-      console.error('Firestore backup error:', error);
-    }
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    try {
-      // 2. Send email via FormSubmit.co (AJAX mode)
-      const formSubmitData = new FormData();
-      formSubmitData.append('name', formData.name);
-      formSubmitData.append('email', formData.email);
-      formSubmitData.append('phone', formData.phone);
-      formSubmitData.append('service', formData.service);
-      formSubmitData.append('message', formData.message);
-      formSubmitData.append('_subject', 'Naye Contact Form Submission from Apex Duct Cleaning');
-      formSubmitData.append('_template', 'table');
-      formSubmitData.append('_next', 'https://apexductcleaning.com/thank-you');
-      formSubmitData.append('_replyto', formData.email);
-
-      const response = await fetch('https://formsubmit.co/ajax/info@apexductcleaning.com', {
-        method: 'POST',
-        body: formSubmitData,
-      });
-
-      if (response.ok) {
-        setIsSuccess(true);
-        toast.success('Message sent successfully! We will contact you soon.');
-        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-      } else {
-        throw new Error('FormSubmit error');
+      if (
+        !serviceId || serviceId === 'your_service_id' ||
+        !templateId || templateId === 'your_template_id' ||
+        !publicKey || publicKey === 'your_public_key'
+      ) {
+        alert('Please configure your actual EmailJS keys in the .env file first! Currently, it has placeholder values.');
+        setIsSubmitting(false);
+        return;
       }
-    } catch (error) {
-      console.error('Error sending message:', error);
-      toast.error('Failed to send message. Please try again.');
+
+      await emailjs.sendForm(
+        serviceId,
+        templateId,
+        e.currentTarget,
+        publicKey
+      );
+
+      setIsSuccess(true);
+      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+    } catch (error: any) {
+      console.error('EmailJS submission error:', error);
+      alert('Failed to send message: ' + (error?.text || error?.message || 'Please check your EmailJS keys and console logs.'));
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  if (loading) {
-    return (
-      <div className="pt-32 pb-24 flex justify-center">
-        <Loader2 className="animate-spin text-blue-600" size={48} />
-      </div>
-    );
-  }
-
-  if (!content) {
-    return (
-      <div className="pt-32 pb-24 text-center">
-        <h1 className="text-4xl font-bold text-slate-900">Content Not Found</h1>
-        <p className="text-slate-500 mt-4">Please seed the content from the admin panel.</p>
-      </div>
-    );
-  }
 
   const contactInfo = {
     ...(content?.info || {
@@ -127,6 +97,12 @@ export default function Contact() {
     }),
     phone: '(608) 925-0728'
   };
+
+  const servicesList = services.length > 0 ? services : [
+    { id: 'air-duct', title: 'Air Duct Cleaning' },
+    { id: 'hvac-restoration', title: 'HVAC Restoration' },
+    { id: 'dryer-vent', title: 'Dryer Vent Cleaning' }
+  ];
 
   const contactItems = [
     { icon: MessageCircle, label: 'WhatsApp', value: '(608) 925-0728', href: 'https://wa.me/16089250728?text=Hello%2C%20I%27m%20interested%20in%20your%20duct%20cleaning%20services', color: 'bg-blue-100 text-blue-600' },
@@ -188,17 +164,10 @@ export default function Contact() {
                 </button>
               </div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                action="https://formsubmit.co/info@apexductcleaning.com"
-                method="POST"
-                className="flex flex-col gap-8"
-              >
-                {/* FormSubmit Configuration */}
-                <input type="hidden" name="_subject" value="Naye Contact Form Submission from Apex Duct Cleaning" />
-                <input type="hidden" name="_next" value="https://apexductcleaning.com/thank-you" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_replyto" value={formData.email} />
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-8"
+            >
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
@@ -254,7 +223,7 @@ export default function Contact() {
                       className="p-4 rounded-2xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all appearance-none"
                     >
                       <option value="">Select a service</option>
-                      {services.map((s) => (
+                      {servicesList.map((s) => (
                         <option key={s.id} value={s.title}>{s.title}</option>
                       ))}
                     </select>
