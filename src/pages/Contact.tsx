@@ -77,6 +77,15 @@ export default function Contact() {
         publicKey
       );
 
+      // Track Meta Pixel Lead event
+      if (typeof (window as any).fbq === 'function') {
+        (window as any).fbq('track', 'Lead', {
+          content_name: formData.service || 'General Inquiry',
+          content_category: 'Contact Form Submission',
+          status: 'Submitted'
+        });
+      }
+
       setIsSuccess(true);
       setFormData({ name: '', email: '', phone: '', service: '', message: '' });
     } catch (error: any) {
