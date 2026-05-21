@@ -2,6 +2,15 @@ import { MessageCircle } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function FloatingCallButton() {
+  const handleWhatsAppClick = () => {
+    if (typeof (window as any).fbq === 'function') {
+      (window as any).fbq('track', 'Contact', {
+        content_name: 'WhatsApp Floating Button',
+        content_category: 'Chat Initiation'
+      });
+    }
+  };
+
   return (
     <>
       <style>
@@ -42,6 +51,7 @@ export default function FloatingCallButton() {
         href="https://wa.me/16089250728?text=Hello%2C%20I%27m%20interested%20in%20your%20duct%20cleaning%20services"
         target="_blank"
         rel="noopener noreferrer"
+        onClick={handleWhatsAppClick}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         whileTap={{ scale: 0.9 }}
